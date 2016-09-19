@@ -52,7 +52,6 @@ handler.buildMap({
     markers = handler.addMarkers(<%=raw @pindrop.to_json %>);
     handler.bounds.extendWith(markers);
     handler.fitMapToBounds();
-    handler.getMap().setZoom(6);
   }
 );
 </script>

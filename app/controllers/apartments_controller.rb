@@ -8,7 +8,7 @@ class ApartmentsController < ApplicationController
     @pindrop = Gmaps4rails.build_markers(@apartments) do |apartment, marker|
       marker.lat apartment.latitude
       marker.lng apartment.longitude
-      marker.infowindow apartment.full_address
+      marker.infowindow '<a href="/apartments/' + apartment.id.to_s + '"/>' + apartment.full_address + '</a>'
     end
   end
 
@@ -17,7 +17,7 @@ class ApartmentsController < ApplicationController
   def show
     @apartments = Apartment.find(params[:id]) #@apartments may also be found using the set_apartment method provided by scaffolding
     @pindrop = Gmaps4rails.build_markers(@apartments) do |apartment, marker|
-      marker.lat apartment.latitude
+      marker.lat(apartment.latitude)
       marker.lng apartment.longitude
       marker.infowindow apartment.full_address
     end
