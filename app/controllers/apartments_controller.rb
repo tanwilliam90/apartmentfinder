@@ -10,6 +10,12 @@ class ApartmentsController < ApplicationController
   # GET /apartments/1
   # GET /apartments/1.json
   def show
+    @apartments = Apartment.find(params[:id]) #@apartments may also be found using the set_apartment method provided by scaffolding
+    @pindrop = Gmaps4rails.build_markers(@apartments) do |apartment, marker|
+      marker.lat apartment.latitude
+      marker.lng apartment.longitude
+      marker.infowindow apartment.full_address
+    end
   end
 
   # GET /apartments/new
@@ -52,7 +58,7 @@ class ApartmentsController < ApplicationController
     @owners_for_select = Owner.all.map do |owner|
       [owner.name, owner.id]
     end
-    
+
     respond_to do |format|
       if @apartment.update(apartment_params)
         format.html { redirect_to @apartment, notice: 'Apartment was successfully updated.' }
