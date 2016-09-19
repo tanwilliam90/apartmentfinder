@@ -5,6 +5,11 @@ class ApartmentsController < ApplicationController
   # GET /apartments.json
   def index
     @apartments = Apartment.all
+    @pindrop = Gmaps4rails.build_markers(@apartments) do |apartment, marker|
+      marker.lat apartment.latitude
+      marker.lng apartment.longitude
+      marker.infowindow apartment.full_address
+    end
   end
 
   # GET /apartments/1

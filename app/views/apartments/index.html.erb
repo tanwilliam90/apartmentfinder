@@ -40,3 +40,19 @@
 <br>
 
 <%= link_to 'New Apartment', new_apartment_path %>
+<hr>
+<div id="all_map">Google map will appear here...</div>
+<script type="text/javascript">
+handler = Gmaps.build('Google');
+handler.buildMap({
+    provider: {},
+    internal: {id: 'all_map'}
+  },
+  function() {
+    markers = handler.addMarkers(<%=raw @pindrop.to_json %>);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+    handler.getMap().setZoom(6);
+  }
+);
+</script>
