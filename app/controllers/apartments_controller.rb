@@ -31,6 +31,9 @@ class ApartmentsController < ApplicationController
   # POST /apartments.json
   def create
     @apartment = Apartment.new(apartment_params)
+    @owners_for_select = Owner.all.map do |owner|
+      [owner.name, owner.id]
+    end
 
     respond_to do |format|
       if @apartment.save
@@ -46,6 +49,10 @@ class ApartmentsController < ApplicationController
   # PATCH/PUT /apartments/1
   # PATCH/PUT /apartments/1.json
   def update
+    @owners_for_select = Owner.all.map do |owner|
+      [owner.name, owner.id]
+    end
+    
     respond_to do |format|
       if @apartment.update(apartment_params)
         format.html { redirect_to @apartment, notice: 'Apartment was successfully updated.' }

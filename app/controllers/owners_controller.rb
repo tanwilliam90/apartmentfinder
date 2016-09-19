@@ -10,6 +10,7 @@ class OwnersController < ApplicationController
   # GET /owners/1
   # GET /owners/1.json
   def show
+    @owners = Owner.find(params[:id])
   end
 
   # GET /owners/new

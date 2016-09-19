@@ -17,3 +17,15 @@
 
 <%= link_to 'Edit', edit_owner_path(@owner) %> |
 <%= link_to 'Back', owners_path %>
+
+<hr>
+<h3>Apartments:</h3>
+<p>
+  <ul>
+    <% @owners.apartments.each do |apartment| %>
+      <li>
+        <a href="/apartments/<%=apartment.id%>"><%= apartment.address1 %></a>
+      </li>
+    <%end%>
+  </ul>
+</p>
