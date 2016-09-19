@@ -35,10 +35,11 @@
     <%= f.label :country %><br>
     <%= f.text_field :country %>
   </div>
+  <label>Owner:</label>
   <div class="field">
-    <%= f.label :owner_id %><br>
-    <%= f.text_field :owner_id %>
+    <%= select(:apartment, :owner_id, @owners_for_select) %>
   </div>
+  <br>
   <div class="actions">
     <%= f.submit %>
   </div>

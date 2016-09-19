@@ -15,10 +15,16 @@ class ApartmentsController < ApplicationController
   # GET /apartments/new
   def new
     @apartment = Apartment.new
+    @owners_for_select = Owner.all.map do |owner|
+      [owner.name, owner.id]
+    end
   end
 
   # GET /apartments/1/edit
   def edit
+    @owners_for_select = Owner.all.map do |owner|
+      [owner.name, owner.id]
+    end
   end
 
   # POST /apartments

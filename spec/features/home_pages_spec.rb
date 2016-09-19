@@ -23,7 +23,7 @@ RSpec.feature "HomePages", type: :feature do
         fill_in 'apartment[address1]', with: '7182 Sharon Drive'
         fill_in 'apartment[city]', with: 'San Jose'
         fill_in 'apartment[state]', with: 'CA'
-        fill_in 'apartment[owner_id]', with: '1'
+        select 'Vivian', from: 'apartment[owner_id]'
       end
       Then 'I submit the information' do
         click_button 'Create Apartment'
