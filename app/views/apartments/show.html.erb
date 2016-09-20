@@ -1,6 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <%if !@apartment.image_file_name.nil?%>
+    <%=image_tag @apartment.image.url(:large)%>
+  <%end%>
+</p>
+
+<p>
   <strong>Address1:</strong>
   <%= @apartment.address1 %>
 </p>

@@ -3,7 +3,8 @@ source 'https://rubygems.org'
 gem 'bootstrap-generators'
 gem 'geocoder'
 gem 'gmaps4rails'
-
+gem "paperclip", "~> 5.0.0"
+gem 'textacular', '~> 3.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
 # Use postgresql as the database for Active Record
