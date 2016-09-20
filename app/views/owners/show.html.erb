@@ -1,5 +1,9 @@
 <p id="notice"><%= notice %></p>
-
+<p>
+  <%if !@owner.image_file_name.nil?%>
+    <%=image_tag @owner.image.url(:large)%>
+  <%end%>
+</p>
 <p>
   <strong>Name:</strong>
   <%= @owner.name %>

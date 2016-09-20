@@ -18,6 +18,9 @@
         <td><%= owner.name %></td>
         <td><%= owner.time %></td>
         <td><%= owner.phone_number %></td>
+        <%if !owner.image_file_name.nil?%>
+          <td><%= image_tag owner.image.url(:thumb) %></td>
+        <%end%>
         <td><%= link_to 'Show', owner %></td>
         <td><%= link_to 'Edit', edit_owner_path(owner) %></td>
         <td><%= link_to 'Destroy', owner, method: :delete, data: { confirm: 'Are you sure?' } %></td>

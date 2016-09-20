@@ -41,6 +41,11 @@
   <%= @apartment.owner.name %>
 </p>
 
+<p>
+  <strong>Description:</strong>
+  <%= @apartment.description %>
+</p>
+
 <%= link_to 'Edit', edit_apartment_path(@apartment) %> |
 <%= link_to 'Back', apartments_path %>
 

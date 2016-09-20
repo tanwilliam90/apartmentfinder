@@ -4,12 +4,22 @@ class ApartmentsController < ApplicationController
   # GET /apartments
   # GET /apartments.json
   def index
-    @apartments = Apartment.all
+    if params[:search].nil?
+      @apartments = Apartment.all
+    else
+      @user_search = params[:search]
+      @apartments = Apartment.search(@user_search)
+    end
+
     @pindrop = Gmaps4rails.build_markers(@apartments) do |apartment, marker|
       marker.lat apartment.latitude
       marker.lng apartment.longitude
       marker.infowindow '<a href="/apartments/' + apartment.id.to_s + '"/>' + apartment.full_address + '</a>'
     end
+  end
+
+  def search
+    @apartments = Apartment.all
   end
 
   # GET /apartments/1
@@ -93,6 +103,6 @@ class ApartmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def apartment_params
-      params.require(:apartment).permit(:address1, :address2, :city, :postalcode, :state, :country, :owner_id, :image)
+      params.require(:apartment).permit(:address1, :address2, :city, :postalcode, :state, :country, :owner_id, :image, :description)
     end
 end
