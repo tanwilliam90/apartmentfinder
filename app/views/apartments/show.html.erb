@@ -36,13 +36,23 @@
 </p>
 
 <p>
-  <strong>Owner:</strong>
-  <%= @apartment.owner.name %>
+  <strong>Description:</strong>
+  <%= @apartment.description %>
 </p>
 
 <p>
-  <strong>Description:</strong>
-  <%= @apartment.description %>
+  <strong>Owner:</strong>
+  <%= @apartment.user.name %>
+</p>
+
+<p>
+  <strong>Contact hours:</strong>
+  <%=@apartment.time%>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%=@apartment.phone%>
 </p>
 
 <%= link_to 'Edit', edit_apartment_path(@apartment) %> |

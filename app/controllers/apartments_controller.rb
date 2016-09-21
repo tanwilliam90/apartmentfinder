@@ -43,15 +43,15 @@ class ApartmentsController < ApplicationController
   # GET /apartments/new
   def new
     @apartment = Apartment.new
-    @owners_for_select = Owner.all.map do |owner|
-      [owner.name, owner.id]
+    @users_for_select = User.all.map do |user|
+      [user.name, user.id]
     end
   end
 
   # GET /apartments/1/edit
   def edit
-    @owners_for_select = Owner.all.map do |owner|
-      [owner.name, owner.id]
+    @users_for_select = User.all.map do |user|
+      [user.name, user.id]
     end
   end
 
@@ -59,8 +59,8 @@ class ApartmentsController < ApplicationController
   # POST /apartments.json
   def create
     @apartment = Apartment.new(apartment_params)
-    @owners_for_select = Owner.all.map do |owner|
-      [owner.name, owner.id]
+    @users_for_select = User.all.map do |user|
+      [user.name, user.id]
     end
 
     respond_to do |format|
@@ -77,8 +77,8 @@ class ApartmentsController < ApplicationController
   # PATCH/PUT /apartments/1
   # PATCH/PUT /apartments/1.json
   def update
-    @owners_for_select = Owner.all.map do |owner|
-      [owner.name, owner.id]
+    @users_for_select = User.all.map do |user|
+      [user.name, user.id]
     end
 
     respond_to do |format|
@@ -110,6 +110,6 @@ class ApartmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def apartment_params
-      params.require(:apartment).permit(:address1, :address2, :city, :postalcode, :state, :country, :owner_id, :image, :description)
+      params.require(:apartment).permit(:address1, :address2, :city, :postalcode, :state, :country, :user_id, :image, :description, :phone, :time)
     end
 end

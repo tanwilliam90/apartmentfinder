@@ -30,9 +30,9 @@
         <td><%= apartment.postalcode %></td>
         <td><%= apartment.state %></td>
         <td><%= apartment.country %></td>
-        <td><%= apartment.owner.name %></td>
-        <td><%= apartment.owner.phone_number %></td>
-        <td><%= apartment.owner.time %></td>
+        <td><%= apartment.user.name %></td>
+        <td><%= apartment.phone %></td>
+        <td><%= apartment.time %></td>
         <td><%= link_to 'Show', apartment %></td>
         <td><%= link_to 'Edit', edit_apartment_path(apartment) %></td>
         <td><%= link_to 'Destroy', apartment, method: :delete, data: { confirm: 'Are you sure?' } %></td>

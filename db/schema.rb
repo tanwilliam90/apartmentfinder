@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160921173807) do
+ActiveRecord::Schema.define(version: 20160921211145) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(version: 20160921173807) do
     t.integer  "postalcode"
     t.string   "state"
     t.string   "country"
-    t.integer  "owner_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.float    "latitude"
@@ -33,21 +32,12 @@ ActiveRecord::Schema.define(version: 20160921173807) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.text     "description"
-  end
-
-  add_index "apartments", ["owner_id"], name: "index_apartments_on_owner_id", using: :btree
-
-  create_table "owners", force: :cascade do |t|
-    t.string   "name"
+    t.integer  "user_id"
+    t.string   "phone"
     t.text     "time"
-    t.string   "phone_number"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
   end
+
+  add_index "apartments", ["user_id"], name: "index_apartments_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -62,10 +52,11 @@ ActiveRecord::Schema.define(version: 20160921173807) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  add_foreign_key "apartments", "owners"
+  add_foreign_key "apartments", "users"
 end
