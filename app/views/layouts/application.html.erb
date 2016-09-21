@@ -45,6 +45,9 @@
         <ul class="nav navbar-nav">
           <li class="active"><a href="/apartments">All Apartments</a></li>
           <li><a href="/owners">All Owners</a></li>
+          <li><a href="/users/edit">Edit Account</a></li>
+          <li><a href="/users/sign_in">Sign In</a></li>
+          <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
           <!-- <li><a href="#contact">Contact</a></li> -->
         </ul>
       </div>
@@ -57,7 +60,6 @@
         <%= msg %>
       <% end %>
     <% end %>
-
     <%= yield %>
   </div>
 </body>
