@@ -46,9 +46,14 @@
           <li><a href="/apartments">All Apartments</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="/users/edit">Edit Account</a></li>
-          <li><a href="/users/sign_in">Sign In</a></li>
-          <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
+          <%if !current_user.nil?%>
+            <li><a>Hello, <%=current_user.name%>!</a></li>
+            <li><a href="/users/edit">Edit Account</a></li>
+            <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
+          <%end%>
+          <%if current_user.nil? %>
+            <li><a href="/users/sign_in">Sign In</a></li>
+          <%end%>
         </ul>
       </div>
 

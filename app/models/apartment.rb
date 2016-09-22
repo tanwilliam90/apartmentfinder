@@ -10,4 +10,6 @@ class Apartment < ActiveRecord::Base
   def full_address
     full_address = address1 + ' ' + address2 + ', ' + city + ', ' + postalcode.to_s + ', ' + state + ', ' + country
   end
+
+  resourcify
 end

@@ -34,8 +34,15 @@
         <td><%= apartment.phone %></td>
         <td><%= apartment.time %></td>
         <td><%= link_to 'Show', apartment %></td>
-        <td><%= link_to 'Edit', edit_apartment_path(apartment) %></td>
-        <td><%= link_to 'Destroy', apartment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%if !current_user.nil? %>
+          <% if current_user.roles[0].name == "admin" %>
+            <td><%= link_to 'Edit', edit_apartment_path(apartment) %></td>
+            <td><%= link_to 'Destroy', apartment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <%elsif current_user.id == apartment.user.id %>
+            <td><%= link_to 'Edit', edit_apartment_path(apartment) %></td>
+            <td><%= link_to 'Destroy', apartment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
