@@ -1,0 +1,22 @@
+<h1>User List</h1>
+
+<table class="table">
+  <thead>
+    <th>User</th>
+    <th>Role</th>
+    <th></th>
+  </thead>
+  <tbody>
+    <%@users.each do |user|%>
+      <tr>
+        <td><%=user.name%></td>
+        <td><%=user.roles[0].name.capitalize%></td>
+        <td>
+          <%= form_tag('/admin/update/' + user.id.to_s, method: :PATCH) do %>
+            <input type="submit" value="Admin-ify">
+          <%end%>
+        </td>
+      </tr>
+    <%end%>
+  </tbody>
+</table>
