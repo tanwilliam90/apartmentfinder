@@ -1,4 +1,9 @@
 class RegistrationsController < Devise::RegistrationsController
+  def create
+    super
+    @user = User.last
+    @user.add_role(:owner)
+  end
 
   private
 

@@ -17,6 +17,7 @@ class AdminController < ApplicationController
 
   def authorize
     if !current_user.has_role? :admin
+      flash[:alert] = 'You do not have admin authorization.'
       redirect_to '/'
     end
   end
