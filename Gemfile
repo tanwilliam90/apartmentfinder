@@ -62,3 +62,7 @@ group :development do
 end
 
 gem 'omniauth-twitter'
+
+group :production do
+  gem 'rails_12factor'
+end
