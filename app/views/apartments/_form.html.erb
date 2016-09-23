@@ -45,10 +45,17 @@
     <%=f.text_area :description, :rows => "5"%>
   </div>
   <hr>
-  <label>Owner:</label>
-  <div class="field">
-    <%= select(:apartment, :user_id, @users_for_select) %>
-  </div>
+  <%if !current_user.roles[0].name == 'admin' %>
+    <label>Owner: <%=current_user.name%></label>
+    <div class="field">
+      <%=f.hidden_field :user_id, :value => current_user.id %>
+    </div>
+  <%else%>
+    <label>Pick an owner:</label>
+    <div class="field">
+      <%= select(:apartment, :user_id, @users_for_select) %>
+    </div><br>
+  <%end%>
   <div class="field">
     <%=f.label :phone%><br>
     <%=f.text_field :phone%>
