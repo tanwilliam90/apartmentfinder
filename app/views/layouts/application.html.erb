@@ -47,7 +47,14 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <%if !current_user.nil?%>
-            <li><a>Hello, <%=current_user.name%>! ( <%=current_user.roles[0].name%> )</a></li>
+            <li id="nav-icon">
+              <%if !current_user.image_file_name.nil?%>
+                <%= link_to_if 1==2, image_tag(current_user.image.url(:thumb)), current_user.image.url%>
+              <%end%>
+            </li>
+            <li>
+              <a id="nav-hover">Hello, <%=current_user.name%>! ( <%=current_user.roles[0].name%> )</a>
+            </li>
             <li><a href="/users/edit">Edit Account</a></li>
             <% if current_user.roles[0].name == "admin" %>
               <li><%=link_to "Administration", admin_path %></li>

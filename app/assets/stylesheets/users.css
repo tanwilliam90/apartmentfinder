@@ -1,0 +1,8 @@
+#box {
+  border-style: solid;
+  border-color: black;
+  border-width: 2px;
+  padding-bottom: 24px;
+  margin-top: 10%;
+  width: 284px;
+}
